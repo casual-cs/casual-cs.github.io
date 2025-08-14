@@ -804,18 +804,26 @@
         }
 
         function updateTime() {
+            // Get current time in British timezone (Europe/London)
             const now = new Date();
-            const day = getOrdinal(now.getDate());
-            const month = now.toLocaleString('en-GB', { month: 'long' });
-            const year = now.getFullYear();
+            const britishTime = new Date(now.toLocaleString("en-US", {timeZone: "Europe/London"}));
+            
+            const day = getOrdinal(britishTime.getDate());
+            const month = britishTime.toLocaleString('en-GB', { month: 'long' });
+            const year = britishTime.getFullYear();
 
-            let hours = now.getHours();
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const seconds = now.getSeconds().toString().padStart(2, '0');
+            let hours = britishTime.getHours();
+            const minutes = britishTime.getMinutes().toString().padStart(2, '0');
+            const seconds = britishTime.getSeconds().toString().padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12 || 12;
 
-            const time = `${hours}:${minutes}:${seconds} ${ampm}`;
+            // Determine if it's BST or GMT
+            const januaryOffset = new Date(britishTime.getFullYear(), 0, 1).getTimezoneOffset();
+            const currentOffset = britishTime.getTimezoneOffset();
+            const timezone = (januaryOffset !== currentOffset) ? 'BST' : 'GMT';
+
+            const time = `${hours}:${minutes}:${seconds} ${ampm} ${timezone}`;
             document.getElementById('time').textContent = `${day} ${month}, ${year} - ${time}`;
         }
 
