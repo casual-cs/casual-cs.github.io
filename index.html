@@ -823,7 +823,7 @@
             const currentOffset = britishTime.getTimezoneOffset();
             const timezone = (januaryOffset !== currentOffset) ? 'BST' : 'GMT';
 
-            const time = `${hours}:${minutes}:${seconds} ${ampm} ${timezone}`;
+            const time = `${hours}:${minutes}:${seconds} ${ampm}`;
             document.getElementById('time').textContent = `${day} ${month}, ${year} - ${time}`;
         }
 
