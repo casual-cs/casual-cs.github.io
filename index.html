@@ -47,32 +47,6 @@
             padding: 0 20px;
         }
 
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.1;
-        }
-
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, var(--accent-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: drift 20s linear infinite;
-        }
-
-        @keyframes drift {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-50px, -50px) rotate(360deg); }
-        }
-
         /* Navigation */
         .nav {
             position: fixed;
@@ -602,8 +576,6 @@
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-    
     <!-- Navigation -->
     <nav class="nav">
         <div class="container">
@@ -750,7 +722,7 @@
                         </div>
                     </div>
                     <div class="timeline-icon">
-                        <i class="fas fa-shield"></i>
+                        <i class="fa-regular fa-shield"></i>
                     </div>
                 </div>
                 
@@ -776,7 +748,7 @@
                         </div>
                     </div>
                     <div class="timeline-icon">
-                        <i class="fab fa-discord"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
                 </div>
                 
