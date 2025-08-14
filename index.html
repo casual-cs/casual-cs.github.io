@@ -833,7 +833,7 @@
             const londonTimeZone = formatter.formatToParts(now).find(part => part.type === 'timeZoneName')?.value;
             const timezone = londonTimeZone === 'BST' || londonTimeZone?.includes('BST') ? 'BST' : 'GMT';
 
-            const time = `${hours}:${minutes}:${seconds} ${ampm} ${timezone}`;
+            const time = `${hours}:${minutes}:${seconds} ${ampm}`;
             document.getElementById('time').textContent = `${day} ${month}, ${year} - ${time}`;
         }
 
